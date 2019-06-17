@@ -10,6 +10,14 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
+      <concept id="1082978164219" name="jetbrains.mps.lang.structure.structure.EnumerationDataTypeDeclaration" flags="ng" index="AxPO7">
+        <reference id="1083171729157" name="memberDataType" index="M4eZT" />
+        <child id="1083172003582" name="member" index="M5hS2" />
+      </concept>
+      <concept id="1083171877298" name="jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration" flags="ig" index="M4N5e">
+        <property id="1083923523172" name="externalValue" index="1uS6qo" />
+        <property id="1083923523171" name="internalValue" index="1uS6qv" />
+      </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
         <property id="4628067390765956802" name="abstract" index="R5$K7" />
@@ -48,15 +56,12 @@
     <property role="TrG5h" value="Cell" />
     <property role="R5$K7" value="true" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyi" id="3wLemDnML_q" role="1TKVEl">
-      <property role="IQ2nx" value="4049080668885031258" />
-      <property role="TrG5h" value="x" />
-      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
-    </node>
-    <node concept="1TJgyi" id="3wLemDnML_s" role="1TKVEl">
-      <property role="IQ2nx" value="4049080668885031260" />
-      <property role="TrG5h" value="y" />
-      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    <node concept="1TJgyj" id="5spMjRtwhBW" role="1TKVEi">
+      <property role="IQ2ns" value="6276268823263910396" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="pathways" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="5spMjRtw7Of" resolve="SignalPathway" />
     </node>
   </node>
   <node concept="1TIwiD" id="3wLemDnMLzF">
@@ -64,22 +69,12 @@
     <property role="TrG5h" value="StemCell" />
     <property role="34LRSv" value="stemcell" />
     <ref role="1TJDcQ" node="3wLemDnMADt" resolve="Cell" />
-    <node concept="1TJgyi" id="3wLemDnML_l" role="1TKVEl">
-      <property role="IQ2nx" value="4049080668885031253" />
-      <property role="TrG5h" value="divisionFrequency" />
-      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
-    </node>
   </node>
   <node concept="1TIwiD" id="3wLemDnML_n">
     <property role="EcuMT" value="4049080668885031255" />
     <property role="TrG5h" value="SpikingCell" />
     <property role="34LRSv" value="spikingcell" />
     <ref role="1TJDcQ" node="3wLemDnMADt" resolve="Cell" />
-    <node concept="1TJgyi" id="3wLemDnML_o" role="1TKVEl">
-      <property role="IQ2nx" value="4049080668885031256" />
-      <property role="TrG5h" value="spikingFrequency" />
-      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
-    </node>
   </node>
   <node concept="1TIwiD" id="3wLemDnML_v">
     <property role="EcuMT" value="4049080668885031263" />
@@ -95,6 +90,112 @@
       <property role="20kJfa" value="cells" />
       <property role="20lbJX" value="0..n" />
       <ref role="20lvS9" node="3wLemDnMADt" resolve="Cell" />
+    </node>
+  </node>
+  <node concept="AxPO7" id="5spMjRtw7Oa">
+    <property role="TrG5h" value="ConditionType" />
+    <ref role="M4eZT" to="tpck:fKAQMTB" resolve="boolean" />
+    <node concept="M4N5e" id="5spMjRtw7Ob" role="M5hS2">
+      <property role="1uS6qv" value="false" />
+      <property role="1uS6qo" value="Rule" />
+    </node>
+    <node concept="M4N5e" id="5spMjRtw7Oc" role="M5hS2">
+      <property role="1uS6qo" value="Probability" />
+      <property role="1uS6qv" value="true" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5spMjRtw7Of">
+    <property role="EcuMT" value="6276268823263870223" />
+    <property role="TrG5h" value="SignalPathway" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="5spMjRtw7Oo" role="1TKVEi">
+      <property role="IQ2ns" value="6276268823263870232" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="conditions" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="5spMjRtw7Og" resolve="Condition" />
+    </node>
+    <node concept="1TJgyi" id="5spMjRtwi3b" role="1TKVEl">
+      <property role="IQ2nx" value="6276268823263912139" />
+      <property role="TrG5h" value="frequency" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5spMjRtw7Og">
+    <property role="EcuMT" value="6276268823263870224" />
+    <property role="TrG5h" value="Condition" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="1TIwiD" id="5spMjRtw7Oq">
+    <property role="EcuMT" value="6276268823263870234" />
+    <property role="TrG5h" value="ConditionReducer" />
+    <ref role="1TJDcQ" node="5spMjRtw7Og" resolve="Condition" />
+    <node concept="1TJgyi" id="5spMjRtw7Or" role="1TKVEl">
+      <property role="IQ2nx" value="6276268823263870235" />
+      <property role="TrG5h" value="reduceRule" />
+      <ref role="AX2Wp" node="5spMjRtw7Ot" resolve="ReduceType" />
+    </node>
+    <node concept="1TJgyj" id="5spMjRtw7Oy" role="1TKVEi">
+      <property role="IQ2ns" value="6276268823263870242" />
+      <property role="20lmBu" value="aggregation" />
+      <property role="20kJfa" value="conditions" />
+      <property role="20lbJX" value="0..n" />
+      <ref role="20lvS9" node="5spMjRtwk9l" resolve="ConditionWithFormula" />
+    </node>
+  </node>
+  <node concept="AxPO7" id="5spMjRtw7Ot">
+    <property role="TrG5h" value="ReduceType" />
+    <ref role="M4eZT" to="tpck:fKAQMTA" resolve="integer" />
+    <node concept="M4N5e" id="5spMjRtw7Ou" role="M5hS2">
+      <property role="1uS6qo" value="LogicalOr" />
+      <property role="1uS6qv" value="1" />
+    </node>
+    <node concept="M4N5e" id="5spMjRtw7Ov" role="M5hS2">
+      <property role="1uS6qo" value="LogicalAnd" />
+      <property role="1uS6qv" value="2" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5spMjRtwi38">
+    <property role="EcuMT" value="6276268823263912136" />
+    <property role="TrG5h" value="SpikePathway" />
+    <ref role="1TJDcQ" node="5spMjRtw7Of" resolve="SignalPathway" />
+  </node>
+  <node concept="1TIwiD" id="5spMjRtwi39">
+    <property role="EcuMT" value="6276268823263912137" />
+    <property role="TrG5h" value="DivisionPathway" />
+    <ref role="1TJDcQ" node="5spMjRtw7Of" resolve="SignalPathway" />
+  </node>
+  <node concept="1TIwiD" id="5spMjRtwi3a">
+    <property role="EcuMT" value="6276268823263912138" />
+    <property role="TrG5h" value="ApoptosisPathway" />
+    <ref role="1TJDcQ" node="5spMjRtw7Of" resolve="SignalPathway" />
+  </node>
+  <node concept="1TIwiD" id="5spMjRtwiwm">
+    <property role="EcuMT" value="6276268823263914006" />
+    <property role="TrG5h" value="CheckSignalCondition" />
+    <ref role="1TJDcQ" node="5spMjRtwk9l" resolve="ConditionWithFormula" />
+  </node>
+  <node concept="1TIwiD" id="5spMjRtwiwn">
+    <property role="EcuMT" value="6276268823263914007" />
+    <property role="TrG5h" value="CheckGradientCondigion" />
+    <ref role="1TJDcQ" node="5spMjRtwk9l" resolve="ConditionWithFormula" />
+  </node>
+  <node concept="1TIwiD" id="5spMjRtwk9l">
+    <property role="EcuMT" value="6276268823263920725" />
+    <property role="TrG5h" value="ConditionWithFormula" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" node="5spMjRtw7Og" resolve="Condition" />
+    <node concept="1TJgyi" id="5spMjRtwk9m" role="1TKVEl">
+      <property role="IQ2nx" value="6276268823263920726" />
+      <property role="TrG5h" value="formula" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+    <node concept="1TJgyi" id="5spMjRtwmqL" role="1TKVEl">
+      <property role="IQ2nx" value="6276268823263930033" />
+      <property role="TrG5h" value="type" />
+      <ref role="AX2Wp" node="5spMjRtw7Oa" resolve="ConditionType" />
     </node>
   </node>
 </model>

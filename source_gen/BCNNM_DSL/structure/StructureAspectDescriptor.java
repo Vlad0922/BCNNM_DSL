@@ -4,6 +4,7 @@ package BCNNM_DSL.structure;
 
 import jetbrains.mps.smodel.runtime.BaseStructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
+import jetbrains.mps.smodel.runtime.EnumerationDescriptor;
 import java.util.Collection;
 import java.util.Arrays;
 import org.jetbrains.annotations.Nullable;
@@ -11,13 +12,25 @@ import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.runtime.DataTypeDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
+  /*package*/ final ConceptDescriptor myConceptApoptosisPathway = createDescriptorForApoptosisPathway();
   /*package*/ final ConceptDescriptor myConceptCell = createDescriptorForCell();
+  /*package*/ final ConceptDescriptor myConceptCheckGradientCondigion = createDescriptorForCheckGradientCondigion();
+  /*package*/ final ConceptDescriptor myConceptCheckSignalCondition = createDescriptorForCheckSignalCondition();
+  /*package*/ final ConceptDescriptor myConceptCondition = createDescriptorForCondition();
+  /*package*/ final ConceptDescriptor myConceptConditionReducer = createDescriptorForConditionReducer();
+  /*package*/ final ConceptDescriptor myConceptConditionWithFormula = createDescriptorForConditionWithFormula();
+  /*package*/ final ConceptDescriptor myConceptDivisionPathway = createDescriptorForDivisionPathway();
+  /*package*/ final ConceptDescriptor myConceptSignalPathway = createDescriptorForSignalPathway();
   /*package*/ final ConceptDescriptor myConceptSpace = createDescriptorForSpace();
+  /*package*/ final ConceptDescriptor myConceptSpikePathway = createDescriptorForSpikePathway();
   /*package*/ final ConceptDescriptor myConceptSpikingCell = createDescriptorForSpikingCell();
   /*package*/ final ConceptDescriptor myConceptStemCell = createDescriptorForStemCell();
+  /*package*/ final EnumerationDescriptor myEnumerationConditionType = new EnumerationDescriptor_ConditionType();
+  /*package*/ final EnumerationDescriptor myEnumerationReduceType = new EnumerationDescriptor_ReduceType();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -32,17 +45,35 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptCell, myConceptSpace, myConceptSpikingCell, myConceptStemCell);
+    return Arrays.asList(myConceptApoptosisPathway, myConceptCell, myConceptCheckGradientCondigion, myConceptCheckSignalCondition, myConceptCondition, myConceptConditionReducer, myConceptConditionWithFormula, myConceptDivisionPathway, myConceptSignalPathway, myConceptSpace, myConceptSpikePathway, myConceptSpikingCell, myConceptStemCell);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
+      case LanguageConceptSwitch.ApoptosisPathway:
+        return myConceptApoptosisPathway;
       case LanguageConceptSwitch.Cell:
         return myConceptCell;
+      case LanguageConceptSwitch.CheckGradientCondigion:
+        return myConceptCheckGradientCondigion;
+      case LanguageConceptSwitch.CheckSignalCondition:
+        return myConceptCheckSignalCondition;
+      case LanguageConceptSwitch.Condition:
+        return myConceptCondition;
+      case LanguageConceptSwitch.ConditionReducer:
+        return myConceptConditionReducer;
+      case LanguageConceptSwitch.ConditionWithFormula:
+        return myConceptConditionWithFormula;
+      case LanguageConceptSwitch.DivisionPathway:
+        return myConceptDivisionPathway;
+      case LanguageConceptSwitch.SignalPathway:
+        return myConceptSignalPathway;
       case LanguageConceptSwitch.Space:
         return myConceptSpace;
+      case LanguageConceptSwitch.SpikePathway:
+        return myConceptSpikePathway;
       case LanguageConceptSwitch.SpikingCell:
         return myConceptSpikingCell;
       case LanguageConceptSwitch.StemCell:
@@ -54,20 +85,87 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<DataTypeDescriptor> getDataTypeDescriptors() {
-    return Arrays.asList();
+    return Arrays.asList(myEnumerationConditionType, myEnumerationReduceType);
   }
 
   /*package*/ int internalIndex(SAbstractConcept c) {
     return myIndexSwitch.index(c);
   }
 
+  private static ConceptDescriptor createDescriptorForApoptosisPathway() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BCNNM_DSL", "ApoptosisPathway", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd8120caL);
+    b.class_(false, false, false);
+    b.super_("BCNNM_DSL.structure.SignalPathway", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd807d0fL);
+    b.origin("r:05aa5abd-b9a0-4735-80a0-d81e014acc83(BCNNM_DSL.structure)/6276268823263912138");
+    b.version(2);
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForCell() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BCNNM_DSL", "Cell", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x3831396a57ca6a5dL);
     b.class_(false, true, false);
     b.origin("r:05aa5abd-b9a0-4735-80a0-d81e014acc83(BCNNM_DSL.structure)/4049080668884986461");
     b.version(2);
-    b.property("x", 0x3831396a57cb195aL).type(PrimitiveTypeId.INTEGER).origin("4049080668885031258").done();
-    b.property("y", 0x3831396a57cb195cL).type(PrimitiveTypeId.INTEGER).origin("4049080668885031260").done();
+    b.aggregate("pathways", 0x5719c93ddd8119fcL).target(0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd807d0fL).optional(true).ordered(true).multiple(true).origin("6276268823263910396").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForCheckGradientCondigion() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BCNNM_DSL", "CheckGradientCondigion", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd812817L);
+    b.class_(false, false, false);
+    b.super_("BCNNM_DSL.structure.ConditionWithFormula", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd814255L);
+    b.origin("r:05aa5abd-b9a0-4735-80a0-d81e014acc83(BCNNM_DSL.structure)/6276268823263914007");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForCheckSignalCondition() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BCNNM_DSL", "CheckSignalCondition", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd812816L);
+    b.class_(false, false, false);
+    b.super_("BCNNM_DSL.structure.ConditionWithFormula", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd814255L);
+    b.origin("r:05aa5abd-b9a0-4735-80a0-d81e014acc83(BCNNM_DSL.structure)/6276268823263914006");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForCondition() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BCNNM_DSL", "Condition", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd807d10L);
+    b.class_(false, true, false);
+    b.origin("r:05aa5abd-b9a0-4735-80a0-d81e014acc83(BCNNM_DSL.structure)/6276268823263870224");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForConditionReducer() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BCNNM_DSL", "ConditionReducer", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd807d1aL);
+    b.class_(false, false, false);
+    b.super_("BCNNM_DSL.structure.Condition", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd807d10L);
+    b.origin("r:05aa5abd-b9a0-4735-80a0-d81e014acc83(BCNNM_DSL.structure)/6276268823263870234");
+    b.version(2);
+    b.property("reduceRule", 0x5719c93ddd807d1bL).type(MetaIdFactory.dataTypeId(0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd807d1dL)).origin("6276268823263870235").done();
+    b.aggregate("conditions", 0x5719c93ddd807d22L).target(0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd814255L).optional(true).ordered(true).multiple(true).origin("6276268823263870242").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForConditionWithFormula() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BCNNM_DSL", "ConditionWithFormula", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd814255L);
+    b.class_(false, true, false);
+    b.super_("BCNNM_DSL.structure.Condition", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd807d10L);
+    b.origin("r:05aa5abd-b9a0-4735-80a0-d81e014acc83(BCNNM_DSL.structure)/6276268823263920725");
+    b.version(2);
+    b.property("formula", 0x5719c93ddd814256L).type(PrimitiveTypeId.STRING).origin("6276268823263920726").done();
+    b.property("type", 0x5719c93ddd8166b1L).type(MetaIdFactory.dataTypeId(0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd807d0aL)).origin("6276268823263930033").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForDivisionPathway() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BCNNM_DSL", "DivisionPathway", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd8120c9L);
+    b.class_(false, false, false);
+    b.super_("BCNNM_DSL.structure.SignalPathway", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd807d0fL);
+    b.origin("r:05aa5abd-b9a0-4735-80a0-d81e014acc83(BCNNM_DSL.structure)/6276268823263912137");
+    b.version(2);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForSignalPathway() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BCNNM_DSL", "SignalPathway", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd807d0fL);
+    b.class_(false, true, false);
+    b.origin("r:05aa5abd-b9a0-4735-80a0-d81e014acc83(BCNNM_DSL.structure)/6276268823263870223");
+    b.version(2);
+    b.property("frequency", 0x5719c93ddd8120cbL).type(PrimitiveTypeId.INTEGER).origin("6276268823263912139").done();
+    b.aggregate("conditions", 0x5719c93ddd807d18L).target(0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd807d10L).optional(true).ordered(true).multiple(true).origin("6276268823263870232").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSpace() {
@@ -79,13 +177,20 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("cells", 0x3831396a57cb1964L).target(0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x3831396a57ca6a5dL).optional(true).ordered(true).multiple(true).origin("4049080668885031268").done();
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForSpikePathway() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BCNNM_DSL", "SpikePathway", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd8120c8L);
+    b.class_(false, false, false);
+    b.super_("BCNNM_DSL.structure.SignalPathway", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x5719c93ddd807d0fL);
+    b.origin("r:05aa5abd-b9a0-4735-80a0-d81e014acc83(BCNNM_DSL.structure)/6276268823263912136");
+    b.version(2);
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForSpikingCell() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BCNNM_DSL", "SpikingCell", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x3831396a57cb1957L);
     b.class_(false, false, false);
     b.super_("BCNNM_DSL.structure.Cell", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x3831396a57ca6a5dL);
     b.origin("r:05aa5abd-b9a0-4735-80a0-d81e014acc83(BCNNM_DSL.structure)/4049080668885031255");
     b.version(2);
-    b.property("spikingFrequency", 0x3831396a57cb1958L).type(PrimitiveTypeId.INTEGER).origin("4049080668885031256").done();
     b.alias("spikingcell");
     return b.create();
   }
@@ -95,7 +200,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_("BCNNM_DSL.structure.Cell", 0x9edcd71856d444c5L, 0xae868ea31c5d7fbbL, 0x3831396a57ca6a5dL);
     b.origin("r:05aa5abd-b9a0-4735-80a0-d81e014acc83(BCNNM_DSL.structure)/4049080668885031147");
     b.version(2);
-    b.property("divisionFrequency", 0x3831396a57cb1955L).type(PrimitiveTypeId.INTEGER).origin("4049080668885031253").done();
     b.alias("stemcell");
     return b.create();
   }

@@ -9,8 +9,17 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_ApoptosisPathway;
   private ConceptPresentation props_Cell;
+  private ConceptPresentation props_CheckGradientCondigion;
+  private ConceptPresentation props_CheckSignalCondition;
+  private ConceptPresentation props_Condition;
+  private ConceptPresentation props_ConditionReducer;
+  private ConceptPresentation props_ConditionWithFormula;
+  private ConceptPresentation props_DivisionPathway;
+  private ConceptPresentation props_SignalPathway;
   private ConceptPresentation props_Space;
+  private ConceptPresentation props_SpikePathway;
   private ConceptPresentation props_SpikingCell;
   private ConceptPresentation props_StemCell;
 
@@ -19,12 +28,65 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.ApoptosisPathway:
+        if (props_ApoptosisPathway == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ApoptosisPathway");
+          props_ApoptosisPathway = cpb.create();
+        }
+        return props_ApoptosisPathway;
       case LanguageConceptSwitch.Cell:
         if (props_Cell == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           props_Cell = cpb.create();
         }
         return props_Cell;
+      case LanguageConceptSwitch.CheckGradientCondigion:
+        if (props_CheckGradientCondigion == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("CheckGradientCondigion");
+          props_CheckGradientCondigion = cpb.create();
+        }
+        return props_CheckGradientCondigion;
+      case LanguageConceptSwitch.CheckSignalCondition:
+        if (props_CheckSignalCondition == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("CheckSignalCondition");
+          props_CheckSignalCondition = cpb.create();
+        }
+        return props_CheckSignalCondition;
+      case LanguageConceptSwitch.Condition:
+        if (props_Condition == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_Condition = cpb.create();
+        }
+        return props_Condition;
+      case LanguageConceptSwitch.ConditionReducer:
+        if (props_ConditionReducer == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("ConditionReducer");
+          props_ConditionReducer = cpb.create();
+        }
+        return props_ConditionReducer;
+      case LanguageConceptSwitch.ConditionWithFormula:
+        if (props_ConditionWithFormula == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_ConditionWithFormula = cpb.create();
+        }
+        return props_ConditionWithFormula;
+      case LanguageConceptSwitch.DivisionPathway:
+        if (props_DivisionPathway == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("DivisionPathway");
+          props_DivisionPathway = cpb.create();
+        }
+        return props_DivisionPathway;
+      case LanguageConceptSwitch.SignalPathway:
+        if (props_SignalPathway == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_SignalPathway = cpb.create();
+        }
+        return props_SignalPathway;
       case LanguageConceptSwitch.Space:
         if (props_Space == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -32,6 +94,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Space = cpb.create();
         }
         return props_Space;
+      case LanguageConceptSwitch.SpikePathway:
+        if (props_SpikePathway == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("SpikePathway");
+          props_SpikePathway = cpb.create();
+        }
+        return props_SpikePathway;
       case LanguageConceptSwitch.SpikingCell:
         if (props_SpikingCell == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
